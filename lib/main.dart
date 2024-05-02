@@ -1,4 +1,6 @@
 import 'package:animal_park_web/Config/Theme.dart';
+import 'package:animal_park_web/Pages/MobileHomePage.dart';
+import 'package:animal_park_web/View/HomePageView.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,9 +14,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'AnimalPark Web',
       theme: lightTheme,
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      darkTheme: darkTheme,
+      themeMode: ThemeMode.dark,
+      home: HomePageView(),
     );
   }
 }
