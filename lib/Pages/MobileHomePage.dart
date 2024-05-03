@@ -1,4 +1,6 @@
+import 'package:animal_park_web/Controller/AppController.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class MobileHomePage extends StatelessWidget {
   const MobileHomePage({super.key});
@@ -6,6 +8,7 @@ class MobileHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final w = MediaQuery.of(context).size.width;
+    AppController appController = Get.put(AppController());
     return Scaffold(
       appBar: AppBar(
         leading: Padding(
@@ -23,7 +26,9 @@ class MobileHomePage extends StatelessWidget {
         ),
         actions: [
           ElevatedButton.icon(
-            onPressed: () {},
+            onPressed: () {
+              appController.downloadApk();
+            },
             icon: Icon(
               Icons.download,
               color: Colors.white,
@@ -99,31 +104,36 @@ class MobileHomePage extends StatelessWidget {
                 SizedBox(height: 20),
                 Row(
                   children: [
-                    Container(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 30,
-                        vertical: 20,
-                      ),
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).colorScheme.primary,
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: Row(
-                        children: [
-                          Icon(
-                            Icons.android,
-                            size: 30,
-                          ),
-                          SizedBox(width: 10),
-                          Text(
-                            "Download App",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20,
+                    InkWell(
+                      onTap: () {
+                        appController.downloadApk();
+                      },
+                      child: Container(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 30,
+                          vertical: 20,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).colorScheme.primary,
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.android,
+                              size: 30,
                             ),
-                          ),
-                        ],
+                            SizedBox(width: 10),
+                            Text(
+                              "Download App",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ],

@@ -1,4 +1,6 @@
+import 'package:animal_park_web/Controller/AppController.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class MainInfo extends StatelessWidget {
   const MainInfo({super.key});
@@ -6,7 +8,7 @@ class MainInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final w = MediaQuery.of(context).size.width;
-    final h = MediaQuery.of(context).size.height;
+    AppController appController = Get.put(AppController());
     var theme = Theme.of(context).colorScheme;
     return Row(
       children: [
@@ -68,21 +70,27 @@ class MainInfo extends StatelessWidget {
               SizedBox(height: 20),
               Row(
                 children: [
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
-                    decoration: BoxDecoration(
-                      color: theme.primary,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.android,
-                          size: 30,
-                        ),
-                        SizedBox(width: 10),
-                        Text("Download App"),
-                      ],
+                  InkWell(
+                    onTap: () {
+                      appController.downloadApk();
+                    },
+                    child: Container(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+                      decoration: BoxDecoration(
+                        color: theme.primary,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.android,
+                            size: 30,
+                          ),
+                          SizedBox(width: 10),
+                          Text("Download App"),
+                        ],
+                      ),
                     ),
                   ),
                 ],

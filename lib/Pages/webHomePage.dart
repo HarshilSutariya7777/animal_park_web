@@ -1,16 +1,17 @@
+import 'package:animal_park_web/Controller/AppController.dart';
 import 'package:animal_park_web/widget/WebFeatures.dart';
 import 'package:animal_park_web/widget/divider.dart';
 import 'package:animal_park_web/widget/mainInfo.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class WebHomePage extends StatelessWidget {
   const WebHomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final w = MediaQuery.of(context).size.width;
-    final h = MediaQuery.of(context).size.height;
     var theme = Theme.of(context).colorScheme;
+    AppController appController = Get.put(AppController());
     return Scaffold(
       appBar: AppBar(
         leading: Padding(
@@ -30,7 +31,9 @@ class WebHomePage extends StatelessWidget {
         ),
         actions: [
           ElevatedButton.icon(
-            onPressed: () {},
+            onPressed: () {
+              appController.downloadApk();
+            },
             icon: Icon(Icons.download),
             label: Text("Download App"),
           ),
